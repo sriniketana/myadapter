@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.ibm.mfp</groupId>
+  <artifactId>mfp-java-token-validator</artifactId>
+  <versioning>
+    <release>8.0.2020060704</release>
+    <versions>
+      <version>8.0.2020060704</version>
+    </versions>
+    <lastUpdated>20200611120802</lastUpdated>
+  </versioning>
+</metadata>
