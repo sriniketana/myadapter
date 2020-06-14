@@ -3,6 +3,7 @@ package com.ibm.mobilefoundation.adapter;
 import java.io.IOException;
 import java.net.ResponseCache;
 import java.net.URI;
+import java.security.Principal;
 import java.util.Collection;
 import java.util.Map;
 
@@ -58,7 +59,33 @@ public class MobileFoundationAuthFilter implements ContainerRequestFilter {
                 } else if (tokenValidationRes.getIntrospectionData() != null) {
                     // Success
                     String model  = tokenValidationRes.getIntrospectionData().getScope();
-                    MobileFoundationSecurityContext securityContext = new MobileFoundationSecurityContext(model);
+                    requestContext.setSecurityContext(new SecurityContext(){
+                    
+                        @Override
+                        public boolean isUserInRole(String role) {
+                            // TODO Auto-generated method stub
+                            return false;
+                        }
+                    
+                        @Override
+                        public boolean isSecure() {
+                            // TODO Auto-generated method stub
+                            return false;
+                        }
+                    
+                        @Override
+                        public Principal getUserPrincipal() {
+                            // TODO Auto-generated method stub
+                            return new MobileFoundationUser(model);
+                        }
+                    
+                        @Override
+                        public String getAuthenticationScheme() {
+                            // TODO Auto-generated method stub
+                            return null;
+                        }
+                    });
+
                 }
             } catch (TokenValidationException e) {
                 e.printStackTrace();
