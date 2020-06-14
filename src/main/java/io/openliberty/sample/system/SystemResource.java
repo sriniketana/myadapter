@@ -16,6 +16,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 import com.ibm.mobilefoundation.adapter.MobileFoundationSecurityContext;
+import com.ibm.mobilefoundation.adapter.MobileFoundationUser;
 import com.ibm.mobilefoundation.adapter.OAuthSecurity;
 
 import javax.enterprise.context.RequestScoped;
@@ -41,9 +42,10 @@ public class SystemResource {
 	@Counted(absolute = true, description = "Number of times the JVM system properties are requested")
 	@OAuthSecurity(scope="accessRestricted")
 	public Response getProperties() {
-		String response = "";
+		MobileFoundationUser user = (MobileFoundationUser) secContext.getUserPrincipal();
+		String response = null ;
 		if ( secContext != null) {
-			response = ((MobileFoundationSecurityContext)secContext).getScope(); 
+			response = user.getScope(); 
 		}
 	    return Response.ok(response).build();
 	}
