@@ -65,11 +65,6 @@
             <version>1.1.4</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.9.8</version>
-        </dependency>
     
       <dependency>
         <groupId>javax</groupId>
@@ -87,21 +82,23 @@
         <groupId>com.ibm.mfp</groupId>
         <version>8.0.2020060704</version>
       </dependency>
-      <dependency>
-         <groupId>commons-codec</groupId>
-         <artifactId>commons-codec</artifactId>
-         <version>1.9</version>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.httpcomponents</groupId>
-         <artifactId>httpclient</artifactId>
-         <version>4.5.12</version>
-      </dependency>
-      <dependency>
-         <groupId>org.apache.httpcomponents</groupId>
-         <artifactId>httpcore</artifactId>
-         <version>4.4.6</version>
-      </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>1.9</version>
+        </dependency>
+                <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+                <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpcore</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

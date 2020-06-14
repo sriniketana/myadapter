@@ -14,12 +14,14 @@ package io.openliberty.sample.system;
 
 import javax.ws.rs.core.Response;
 
+import com.ibm.mobilefoundation.adapter.MobileFoundationSecurityContext;
 import com.ibm.mobilefoundation.adapter.OAuthSecurity;
 
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
 import org.eclipse.microprofile.metrics.annotation.Counted;
@@ -29,13 +31,20 @@ import org.eclipse.microprofile.metrics.annotation.Timed;
 @Path("/properties")
 public class SystemResource {
 
+	@Context
+	private MobileFoundationSecurityContext secContext ; 
+
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Timed(name = "getPropertiesTime", description = "Time needed to get the JVM system properties")
 	@Counted(absolute = true, description = "Number of times the JVM system properties are requested")
 	@OAuthSecurity(scope="accessRestricted")
 	public Response getProperties() {
-	    return Response.ok(System.getProperties()).build();
+		String response = "";
+		if ( secContext != null) {
+			response = secContext.getScope(); 
+		}
+	    return Response.ok(response).build();
 	}
 
 
