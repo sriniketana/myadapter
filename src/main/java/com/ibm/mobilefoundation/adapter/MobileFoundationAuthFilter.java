@@ -58,9 +58,7 @@ public class MobileFoundationAuthFilter implements ContainerRequestFilter {
                 } else if (tokenValidationRes.getIntrospectionData() != null) {
                     // Success
                     String model  = tokenValidationRes.getIntrospectionData().getScope();
-                    MobileFoundationSecurityContext securityContext = new MobileFoundationSecurityContext(); 
-
-                    
+                    MobileFoundationSecurityContext securityContext = new MobileFoundationSecurityContext(model);
                 }
             } catch (TokenValidationException e) {
                 e.printStackTrace();

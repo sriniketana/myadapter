@@ -7,11 +7,11 @@ import javax.ws.rs.core.SecurityContext;
 public class MobileFoundationSecurityContext implements SecurityContext {
 
     private String scope ; 
+
     public MobileFoundationSecurityContext(String scope ){
         this.scope = scope; 
     }
-
-
+    
     @Override
     public Principal getUserPrincipal() {
         // TODO Auto-generated method stub
