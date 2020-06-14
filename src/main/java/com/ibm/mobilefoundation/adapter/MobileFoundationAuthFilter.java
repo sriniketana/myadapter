@@ -59,6 +59,7 @@ public class MobileFoundationAuthFilter implements ContainerRequestFilter {
                 } else if (tokenValidationRes.getIntrospectionData() != null) {
                     // Success
                     String model  = tokenValidationRes.getIntrospectionData().getScope();
+                    
                     requestContext.setSecurityContext(new SecurityContext(){
                     
                         @Override
@@ -76,7 +77,7 @@ public class MobileFoundationAuthFilter implements ContainerRequestFilter {
                         @Override
                         public Principal getUserPrincipal() {
                             // TODO Auto-generated method stub
-                            return new MobileFoundationUser(model);
+                            return new MobileFoundationUser(tokenValidationRes.getIntrospectionData().getData());
                         }
                     
                         @Override

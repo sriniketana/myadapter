@@ -1,13 +1,17 @@
 package com.ibm.mobilefoundation.adapter;
 
 import java.security.Principal;
+import java.util.Map;
+
+import javax.json.JsonObject;
 
 public class MobileFoundationUser implements Principal {
 
     private String scope = ""; 
+    private Map<String, Object> introspectionData = null ; 
 
-    public MobileFoundationUser(String scope) {
-        this.scope = scope;
+    public MobileFoundationUser(Map<String, Object> introspectionDataMap) {
+        this.introspectionData = introspectionDataMap;
     }
 
     @Override
@@ -20,5 +24,12 @@ public class MobileFoundationUser implements Principal {
         return this.scope; 
     }
 
+    public String introspectionDataString(){ 
+        String retval = ""; 
+        for (String  key: introspectionData.keySet()){
+            retval += key + ":" + introspectionData.get(key) + "\n"; 
+        }
+        return retval; 
+    }
     
 }

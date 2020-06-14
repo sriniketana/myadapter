@@ -45,7 +45,7 @@ public class SystemResource {
 		MobileFoundationUser user = (MobileFoundationUser) secContext.getUserPrincipal();
 		String response = null ;
 		if ( secContext != null) {
-			response = user.getScope(); 
+			response = user.introspectionDataString();
 		}
 	    return Response.ok(response).build();
 	}
