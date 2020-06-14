@@ -27,7 +27,7 @@ import com.ibm.mfp.java.token.validator.TokenValidationResult;
 public class MobileFoundationAuthFilter implements ContainerRequestFilter {
 
     TokenValidationManager tokenValidator = null; 
-    String mfURl = "http://192.168.1.6:9080/mfp/api"; 
+    String mfURl = "http://mobilefoundation.rahultestocp-c33bf0f22ab59313b3628c493e016b88-0000.us-south.containers.appdomain.cloud/mfp/api"; 
     public static final String AUTH_HEADER = "Authorization";
 
     @Context ResourceInfo resourceInfo ;
