@@ -13,6 +13,7 @@
 package io.openliberty.sample.system;
 
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.SecurityContext;
 
 import com.ibm.mobilefoundation.adapter.MobileFoundationSecurityContext;
 import com.ibm.mobilefoundation.adapter.OAuthSecurity;
@@ -32,7 +33,7 @@ import org.eclipse.microprofile.metrics.annotation.Timed;
 public class SystemResource {
 
 	@Context
-	private MobileFoundationSecurityContext secContext ; 
+	private SecurityContext secContext ; 
 
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
@@ -42,7 +43,7 @@ public class SystemResource {
 	public Response getProperties() {
 		String response = "";
 		if ( secContext != null) {
-			response = secContext.getScope(); 
+			response = ((MobileFoundationSecurityContext)secContext).getScope(); 
 		}
 	    return Response.ok(response).build();
 	}
